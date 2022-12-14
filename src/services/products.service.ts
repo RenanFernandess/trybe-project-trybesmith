@@ -8,6 +8,13 @@ const set = async ({ name, amount }: TProduct): Promise<TStatus> => {
   return { status: null, message: product };
 };
 
+const getAll = async (): Promise<TStatus> => {
+  const products: TProduct[] = await productsModel.getAll();
+
+  return { status: null, message: products };
+};
+
 export default {
   set,
+  getAll,
 };
