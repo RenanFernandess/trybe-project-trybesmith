@@ -9,7 +9,7 @@ const set = async (req: Request, res: Response): Promise<void> => {
     .set({ username, vocation, level, password });
   if (status) { res.status(status).json({ message }); return; }
   
-  res.status(201).json(message);
+  res.status(201).json({ token: message });
 };
 
 export default {
