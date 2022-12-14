@@ -12,6 +12,14 @@ const set = async ({ name, amount, orderId }: TProduct): Promise<TProduct[]> => 
   return result;
 };
 
+const getAll = async (): Promise<TProduct[]> => {
+  const SELECT_QUERY = 'SELECT * FROM Trybesmith.products';
+  const [rseult] = await connection.execute<RowDataPacket[] & TProduct[]>(SELECT_QUERY);
+
+  return rseult;
+};
+
 export default {
   set,
+  getAll,
 };
