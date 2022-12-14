@@ -1,6 +1,6 @@
 import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import TProduct from '../types/product';
-import connection from './database/connection';
+import connection from './connection';
 
 const set = async ({ name, amount, orderId }: TProduct): Promise<TProduct[]> => {
   const INSERT_QUERY = 'INSERT INTO Trybesmith.products (name, amount, order_id) VALUES (?, ?, ?)';
