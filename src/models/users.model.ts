@@ -1,8 +1,8 @@
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
-import TUser from '../types/user';
+import TUser, { TUserRequest } from '../types/user';
 import connection from './connection';
 
-const set = async ({ username, vocation, level, password }: TUser): Promise<TUser[]> => {
+const set = async ({ username, vocation, level, password }: TUserRequest): Promise<TUser[]> => {
   const INSERT_QUERY = `
     INSERT INTO Trybesmith.users (username, vocation, level, password)
     VALUES (?, ?, ?, ?)
