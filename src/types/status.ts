@@ -1,6 +1,6 @@
-type Status = {
+type TStatus = {
   status: (number | null),
   message: (string | object | []),
 };
 
-export default Status;
+export default TStatus;
