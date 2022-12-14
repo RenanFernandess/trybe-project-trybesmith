@@ -1,6 +1,6 @@
 type Status = {
-  status: number,
-  message: (string | unknown),
+  status: (number | null),
+  message: (string | object | []),
 };
 
 export default Status;
