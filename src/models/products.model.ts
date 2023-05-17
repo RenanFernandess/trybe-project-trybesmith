@@ -19,7 +19,18 @@ const getAll = async (): Promise<TProduct[]> => {
   return rseult;
 };
 
+async function update({ orderId, productsIds }: { orderId: number, productsIds: number[] }) {
+  const amountOfId = Array(productsIds.length).fill('?').join(', ');
+  const UPDATE_QUERY = `UPDATE Trybesmith.products  SET order_id = ? WHERE id IN (${amountOfId})`;
+  const [result] = await connection.execute<ResultSetHeader>(
+    UPDATE_QUERY,
+    [orderId, ...productsIds],
+  );
+  return result;
+}
+
 export default {
   set,
   getAll,
+  update,
 };
