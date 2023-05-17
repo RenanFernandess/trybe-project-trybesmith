@@ -2,10 +2,12 @@ import usersModel from '../models/users.model';
 import TUser, { TUserRequest } from '../types/user';
 import createToken from '../auth/secret';
 import TStatus from '../types/status';
+import userValidate from './validations/user.validation';
 
 const set = async (user: TUserRequest): Promise<TStatus> => {
+  const result = userValidate(user);
+  if (result.status) return result;
   const [{ id, username }]: TUser[] = await usersModel.set(user);
-
   const token: string = createToken({ id, username });
   return { status: null, message: token };
 };
