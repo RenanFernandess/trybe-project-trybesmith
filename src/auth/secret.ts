@@ -12,8 +12,8 @@ const createToken = ({ id, username }: { id: number, username: string }): string
 };
 
 export const checkToken = (token:string) => {
-  const { data } = jwt.verify(token, secret) as jwt.JwtPayload;
-  return data;
+  const { id, username } = jwt.verify(token, secret) as jwt.JwtPayload;
+  return { id, username };
 };
 
 export default createToken;
